@@ -4,15 +4,13 @@ import "sort"
 
 func sortMapValues(input map[int]string) (result []string) {
 	//Place your code here
-	a := []int{}
-	s := []string{}
-	for k, _ := range input {
-		a = append(a, k)
+	keys := make([]int, 0, len(input))
+	for k := range input {
+		keys = append(keys, k)
 	}
-	sort.Ints(a)
-	for _, n := range a {
-		s = append(s, input[n])
+	sort.Ints(keys)
+	for _, key := range keys {
+		result = append(result, input[key])
 	}
-	result = s
 	return
 }
